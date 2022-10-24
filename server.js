@@ -1,7 +1,7 @@
 const express = require('express')
 const PORT = process.env.PORT || 3001
 const db = require('./db')
-const { Run } = require('./models')
+const { Run, Blog } = require('./models')
 
 const app = express()
 app.use(express.json())
@@ -25,6 +25,22 @@ app.post('/runs', async (req, res) => {
 //update runs
 
 //delete run
+
+//PRODUCTS
+
+//Get ALL prodcuts --> GET
+app.get('/blogs', async (req, res) => {
+  const allBlogs = await Blog.find({})
+  res.json(allBlogs)
+})
+
+//create a product --> POST
+app.post('/blogs', async (req, res) => {
+  let exampleBlogId = '6352b7d9e4d4c6bb3a1cda5b'
+  const requestBody = { ...req.body, brand: exampleBlogId }
+  let createdBlog = await Blog.create(requestBody)
+  res.json({ createdBlog })
+})
 
 app.listen(PORT, () => {
   console.log(`Express server listening on: ${PORT}`)
