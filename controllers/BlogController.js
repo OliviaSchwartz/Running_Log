@@ -6,13 +6,15 @@ const getAllBlogs = async (req, res) => {
 }
 
 const blogByDate = async (req, res) => {
-  const dateBlog = await Blog.findById(req.params.id)
+  const dateBlog = await Blog.findById(req.params.id).populate('run')
   res.json(dateBlog)
 }
 
 const createBlog = async (req, res) => {
-  let createdBlog = await Blog.create(req.body)
-  res.json(createdBlog)
+  let exampleBlogId = '6352b7d9e4d4c6bb3a1cda5b'
+  const requestBody = { ...req.body, brand: exampleBlogId }
+  let createdBlog = await Blog.create(requestBody)
+  res.json({ createdBlog })
 }
 
 const updatedBlog = async (req, res) => {
