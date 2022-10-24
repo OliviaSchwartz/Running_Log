@@ -23,24 +23,37 @@ app.post('/runs', async (req, res) => {
 })
 
 //update runs
+app.put('/runs/:id', async (req, res) => {
+  let updatedRun = await Run.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  })
+  res.json(updatedRun)
+})
 
 //delete run
+app.delete('/run/:id', async (req, res) => {
+  let deletedRun = await Run.findByIdAndDelete(req.params.id)
+  res.json(deletedRun)
+})
+//Blogs
 
-//PRODUCTS
-
-//Get ALL prodcuts --> GET
+//Get ALL blogs --> GET
 app.get('/blogs', async (req, res) => {
   const allBlogs = await Blog.find({})
   res.json(allBlogs)
 })
 
-//create a product --> POST
+//create a blog --> POST
 app.post('/blogs', async (req, res) => {
   let exampleBlogId = '6352b7d9e4d4c6bb3a1cda5b'
   const requestBody = { ...req.body, brand: exampleBlogId }
   let createdBlog = await Blog.create(requestBody)
   res.json({ createdBlog })
 })
+
+//update a blog --> Post
+
+//delete a blog --> Delete
 
 app.listen(PORT, () => {
   console.log(`Express server listening on: ${PORT}`)
