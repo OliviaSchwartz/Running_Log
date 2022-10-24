@@ -31,7 +31,7 @@ app.put('/runs/:id', async (req, res) => {
 })
 
 //delete run
-app.delete('/run/:id', async (req, res) => {
+app.delete('/runs/:id', async (req, res) => {
   let deletedRun = await Run.findByIdAndDelete(req.params.id)
   res.json(deletedRun)
 })
@@ -52,8 +52,18 @@ app.post('/blogs', async (req, res) => {
 })
 
 //update a blog --> Post
+app.put('/blogs/:id', async (req, res) => {
+  let updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  })
+  res.json(updatedBlog)
+})
 
 //delete a blog --> Delete
+app.delete('/blogs/:id', async (req, res) => {
+  let deletedBlog = await Run.findByIdAndDelete(req.params.id)
+  res.json(deletedBlog)
+})
 
 app.listen(PORT, () => {
   console.log(`Express server listening on: ${PORT}`)
