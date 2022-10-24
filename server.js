@@ -10,13 +10,21 @@ app.get('/', (req, res) => {
   res.send({ msg: 'This route is being hit' })
 })
 
-//Run Routes
+//read all runs route ---> Get
+app.get('/runs', async (req, res) => {
+  let allRuns = await Run.find({})
+  res.json(allRuns)
+})
 
-//create Run
+//create Run --> POST
 app.post('/runs', async (req, res) => {
   let createdRun = await Run.create(req.body)
-  res.send(createdRun)
+  res.json(createdRun)
 })
+
+//update runs
+
+//delete run
 
 app.listen(PORT, () => {
   console.log(`Express server listening on: ${PORT}`)
