@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
+import BlogCard from './components/BlogCard'
+import RunningCard from './components/RunningCard'
+import Search from './components/Search'
 
 function App() {
   const [runState, updateRunState] = useState([])
@@ -56,6 +61,9 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <Header />
+      </header>
       <header>Running Log and Blog</header>
       <div>
         {' '}
