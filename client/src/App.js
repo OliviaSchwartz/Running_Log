@@ -50,7 +50,7 @@ function App() {
       date: '',
       distance: '',
       time: '',
-      difficuly: ''
+      difficulty: ''
     })
   }
 
