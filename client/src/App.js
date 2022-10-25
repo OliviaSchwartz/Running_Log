@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/runs" element={<ViewRuns />} />
-        <Route path="/runs/:id" element={<RunDetails />} />
+        <Route path="/runs/:id" element={<RunDetails runs={ViewRuns} />} />
       </Routes>
     </div>
   )

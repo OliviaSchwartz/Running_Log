@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import RunningCard from '../components/RunningCard'
 import { useState, useEffect } from 'react'
 
-function ViewRuns() {
+function ViewRuns(props) {
   let navigate = useNavigate()
 
   const [runState, setRunState] = useState([])
@@ -50,8 +50,8 @@ function ViewRuns() {
     })
   }
 
-  const viewRun = (id) => {
-    navigate(`/runs/${id}`)
+  const viewRun = (_id) => {
+    navigate(`${_id}`)
   }
 
   return (
@@ -79,6 +79,11 @@ function ViewRuns() {
         </form>
       </div>
 
+      <section>
+        <input />
+        <button>Search For A Run</button>
+      </section>
+
       <div className="run-container">
         {runState.map((run) => (
           <div key={run._id}>
@@ -88,7 +93,7 @@ function ViewRuns() {
               distance={run.distance}
               time={run.time}
               difficulty={run.difficulty}
-              onClick={viewRun}
+              onClick={() => viewRun(run._id)}
             />
           </div>
         ))}
