@@ -7,57 +7,19 @@ import BlogCard from './components/BlogCard'
 import RunningCard from './components/RunningCard'
 import Search from './components/Search'
 import Home from './pages/Home'
+import ViewRuns from './pages/ViewRuns'
 
 function App() {
-  const [runState, updateRunState] = useState([])
   const [blogs, updateBlogs] = useState([])
-  const [formState, setFormState] = useState({
-    date: '',
-    distance: '',
-    time: '',
-    difficulty: ''
-  })
+
   const [blogState, setBlogState] = useState({
     date: '',
     description: '',
     run: ''
   })
 
-  useEffect(() => {
-    const apiCall = async () => {
-      console.log('this is the API call')
-      let response = await axios.get('http://localhost:3001/products')
-      updateRunState(response.data)
-    }
-    apiCall()
-  }, [])
-
-  const handleRunChange = (event) => {
-    setFormState({ ...formState, [event.target.id]: event.target.value })
-  }
-
   const handleBlogChange = (event) => {
     setBlogState({ ...blogState, [event.target.id]: event.target.value })
-  }
-
-  const handleRunSubmit = async (event) => {
-    event.preventDefault()
-    console.log(formState)
-    let newRun = await axios
-      .post('http://localhost:3001/runs', formState)
-      .then((response) => {
-        return response
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    updateRunState([...runState, newRun.data])
-    setFormState({
-      date: '',
-      distance: '',
-      time: '',
-      difficulty: ''
-    })
   }
 
   return (
@@ -67,6 +29,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/runs" element={<ViewRuns />} />
       </Routes>
     </div>
   )

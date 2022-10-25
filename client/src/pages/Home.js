@@ -10,8 +10,11 @@ const Home = (props) => {
           <img
             className="runLogPhoto"
             src="https://images.unsplash.com/photo-1502224562085-639556652f33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2856&q=80"
+            alt="runner"
           />
-          <h2>Running Log</h2>
+          <div className="link">
+            <Link to="/runs">Running Log</Link>
+          </div>
         </div>
       </div>
     </div>
