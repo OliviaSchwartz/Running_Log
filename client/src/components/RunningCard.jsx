@@ -11,8 +11,8 @@ const RunningCard= ({onClick, date, distance, time, difficulty, id}) => {
                 <p>Distance:{distance}</p>
                 <p>Time (minutes): {time} </p>
                 <p>Run difficulty: {difficulty}</p>
-
             </div>
+
         </div>
     )
 }

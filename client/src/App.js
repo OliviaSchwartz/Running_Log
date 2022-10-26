@@ -5,10 +5,11 @@ import './App.css'
 import Header from './components/Header'
 import BlogCard from './components/BlogCard'
 import RunningCard from './components/RunningCard'
-import Search from './components/Search'
+
 import Home from './pages/Home'
 import ViewRuns from './pages/ViewRuns'
 import RunDetails from './pages/RunDetails'
+import ViewBlogs from './pages/ViewBlogs'
 
 function App() {
   const [blogs, updateBlogs] = useState([])
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/runs" element={<ViewRuns />} />
         <Route path="/runs/:id" element={<RunDetails runs={ViewRuns} />} />
+        <Route path="/blogs" element={<ViewBlogs />} />
       </Routes>
     </div>
   )

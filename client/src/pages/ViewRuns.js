@@ -79,11 +79,6 @@ function ViewRuns(props) {
         </form>
       </div>
 
-      <section>
-        <input />
-        <button>Search For A Run</button>
-      </section>
-
       <div className="run-container">
         {runState.map((run) => (
           <div key={run._id}>
