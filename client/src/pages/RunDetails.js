@@ -4,6 +4,9 @@ import axios from 'axios'
 import ViewRuns from './ViewRuns'
 import RunningCard from '../components/RunningCard'
 import Home from './Home'
+import BlogCard from '../components/BlogCard'
+import { Link } from 'react-router-dom'
+import BlogDetails from './BlogDetails'
 
 const RunDetails = (props) => {
   const [run, setRun] = useState([])
@@ -51,6 +54,10 @@ const RunDetails = (props) => {
     navigate(`/runs`)
   }
 
+  const viewBlogs = (_id) => {
+    navigate(`/blogs/${id}`)
+  }
+
   return run ? (
     <div>
       <div>
@@ -69,8 +76,12 @@ const RunDetails = (props) => {
         <p>{run.difficulty}</p>
       </div>
       <div>
-        <button>View Blog For Run</button>
+        <button className="link-button" onClick={viewBlogs}>
+          View this run's blog
+        </button>
         <button onClick={handleDelete}>Delete Run</button>
+
+        <section className="blogCard"></section>
 
         <section>
           <div className="updateRun" />
