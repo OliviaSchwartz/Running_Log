@@ -60,19 +60,31 @@ function ViewRuns(props) {
         <h3>Add Another Run:</h3>
         <form onSubmit={handleRunSubmit}>
           <label htmlFor="Date">Date:</label>
-          <input id="date" value={formState.date} onChange={handleRunChange} />
+          <input
+            id="date"
+            value={formState.date}
+            placeholder="MM/DD/YY"
+            onChange={handleRunChange}
+          />
           <label htmlFor="distance">Distance:</label>
           <input
             id="distance"
             value={formState.distance}
+            placeholder="Distance (In Miles)"
             onChange={handleRunChange}
           />
           <label htmlFor="time">Time:</label>
-          <input id="time" value={formState.time} onChange={handleRunChange} />
+          <input
+            id="time"
+            value={formState.time}
+            placeholder="Time (In Minutes)"
+            onChange={handleRunChange}
+          />
           <label htmlFor="difficuly">Difficulty:</label>
           <input
             id="difficulty"
             value={formState.difficulty}
+            placeholder="1(Easy)-5(Hard)"
             onChange={handleRunChange}
           />
           <button type="submit">Add Run</button>

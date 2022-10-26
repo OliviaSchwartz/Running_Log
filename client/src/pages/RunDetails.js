@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ViewRuns from './ViewRuns'
 import RunningCard from '../components/RunningCard'
@@ -8,6 +8,15 @@ import Home from './Home'
 const RunDetails = (props) => {
   const [run, setRun] = useState([])
   let { id } = useParams()
+  let navigate = useNavigate()
+
+  const [updatedRun, setUpdatedRun] = useState([])
+  const [formState, setFormState] = useState({
+    date: '',
+    distance: '',
+    time: '',
+    difficulty: ''
+  })
 
   useEffect(() => {
     const runId = async () => {
@@ -17,10 +26,37 @@ const RunDetails = (props) => {
     runId()
   }, [props.runs, id])
 
+  const handleDelete = async (event) => {
+    event.preventDefault()
+    let deleteRun = await axios.delete(`http://localhost:3001/runs/${id}`)
+    setRun(deleteRun)
+  }
+
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value })
+  }
+
+  const handleUpdate = async (event) => {
+    event.preventDefault()
+    let updateRun = await axios.put(
+      `http://localhost:3001/runs/${id}`,
+      formState
+    )
+    setUpdatedRun([updatedRun, updateRun.data])
+    setFormState({ date: '', distance: '', time: '', difficulty: '' })
+    window.location.reload()
+  }
+
+  const viewRun = (_id) => {
+    navigate(`/runs`)
+  }
+
   return run ? (
     <div>
       <div>
-        <h1>{run.date}</h1>
+        <h1>Run Log</h1>
+        <h3>Date</h3>
+        <p>{run.date}</p>
       </div>
       <div>
         <h3>Distance:</h3>
@@ -34,10 +70,50 @@ const RunDetails = (props) => {
       </div>
       <div>
         <button>View Blog For Run</button>
-        <button>Delete Run</button>
-        <div className="Update Run" />
-        <button>Update Run</button>
+        <button onClick={handleDelete}>Delete Run</button>
+
+        <section>
+          <div className="updateRun" />
+          <h4>Update Run Details Here:</h4>
+          <h6>
+            {' '}
+            <em>All inputs required**</em>
+          </h6>
+          <form onSubmit={handleUpdate}>
+            <label htmlFor="Date">Date:</label>
+            <input
+              id="date"
+              value={formState.date}
+              placeholder="MM/DD/YY"
+              onChange={handleChange}
+            />
+            <label htmlFor="distance">Distance:</label>
+            <input
+              id="distance"
+              value={formState.distance}
+              placeholder="Distance (In Miles)"
+              onChange={handleChange}
+            />
+            <label htmlFor="time">Time:</label>
+            <input
+              id="time"
+              value={formState.time}
+              placeholder="Time (In Minutes)"
+              onChange={handleChange}
+            />
+            <label htmlFor="difficuly">Difficulty:</label>
+            <input
+              id="difficulty"
+              value={formState.difficulty}
+              placeholder="1(Easy)-5(Hard)"
+              onChange={handleChange}
+            />
+            <button type="submit">Update Run</button>
+          </form>
+        </section>
       </div>
+      <div className="goToLog" />
+      <button onClick={viewRun}>Go Back To Log</button>
     </div>
   ) : null
 }
