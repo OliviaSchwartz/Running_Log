@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Route, Routes } from 'react-router-dom'
@@ -10,20 +11,9 @@ import Home from './pages/Home'
 import ViewRuns from './pages/ViewRuns'
 import RunDetails from './pages/RunDetails'
 import ViewBlogs from './pages/ViewBlogs'
+import BlogDetails from './pages/BlogDetails'
 
 function App() {
-  const [blogs, updateBlogs] = useState([])
-
-  const [blogState, setBlogState] = useState({
-    date: '',
-    description: '',
-    run: ''
-  })
-
-  const handleBlogChange = (event) => {
-    setBlogState({ ...blogState, [event.target.id]: event.target.value })
-  }
-
   return (
     <div className="App">
       <header>
@@ -32,8 +22,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/runs" element={<ViewRuns />} />
-        <Route path="/runs/:id" element={<RunDetails runs={ViewRuns} />} />
+        <Route path="/runs/:id" element={<RunDetails />} />
         <Route path="/blogs" element={<ViewBlogs />} />
+        <Route path="/blogs/:id" element={<BlogDetails />} />
       </Routes>
     </div>
   )

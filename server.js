@@ -8,8 +8,9 @@ const runController = require('./controllers/RunController.js')
 const blogController = require('./controllers/BlogController')
 
 const app = express()
-app.use(cors())
+
 app.use(express.json())
+app.use(cors())
 app.use(logger('dev'))
 db.on('error', console.log.bind(console, 'MongoDB connection error: '))
 

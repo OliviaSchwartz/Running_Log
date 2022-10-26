@@ -6,36 +6,39 @@ import RunningCard from '../components/RunningCard'
 import Home from './Home'
 
 const RunDetails = (props) => {
-  return (
-    <div className="run-content">
+  const [run, setRun] = useState([])
+  let { id } = useParams()
+
+  useEffect(() => {
+    const runId = async () => {
+      let response = await axios.get(`http://localhost:3001/runs/${id}`)
+      setRun(response.data)
+    }
+    runId()
+  }, [props.runs, id])
+
+  return run ? (
+    <div>
       <div>
-        <h1>{props.date}</h1>
+        <h1>{run.date}</h1>
       </div>
-      <section className="details">
-        <div className="flex-row game-details">
-          <div className="detail">
-            <h3>Distance: {props.distance}</h3>
-          </div>
-          <div className="detail">
-            <h3>Time: {props.time}</h3>
-          </div>
-          <div className="detail">
-            <h3>Difficulty: {props.difficulty}</h3>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <button>Update</button>
-      </section>
-      <section>
+      <div>
+        <h3>Distance:</h3>
+        <p>{run.distance}</p>
+        <h3>Time (in minutes):</h3>
+        <p>{run.time}</p>
+      </div>
+      <div>
+        <h3>Difficulty:</h3>
+        <p>{run.difficulty}</p>
+      </div>
+      <div>
+        <button>View Blog For Run</button>
         <button>Delete Run</button>
-      </section>
-      <section>
-        <button>Write Blog for this Run</button>
-      </section>
+        <div className="Update Run" />
+        <button>Update Run</button>
+      </div>
     </div>
-  )
+  ) : null
 }
-
 export default RunDetails

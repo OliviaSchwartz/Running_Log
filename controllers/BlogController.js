@@ -12,7 +12,7 @@ const blogByDate = async (req, res) => {
 
 const createBlog = async (req, res) => {
   let exampleBlogId = '6352b7d9e4d4c6bb3a1cda5b'
-  const requestBody = { ...req.body, brand: exampleBlogId }
+  const requestBody = { ...req.body, run: exampleBlogId }
   let createdBlog = await Blog.create(requestBody)
   res.json({ createdBlog })
 }
