@@ -63,14 +63,15 @@ const BlogDetails = (props) => {
   return blog ? (
     <div>
       <div>
-        <h1>{blog.date}</h1>
+        <h1 className="runTitle">Run Blog</h1>
+        <h3>Run Date</h3>
+        <p className="runDetails">{blog.date}</p>
       </div>
       <div>
         <h3>Description:</h3>
-        <p>{blog.description} </p>
+        <p className="runDetails">{blog.description} </p>
       </div>
       <div className="newBlog">
-        <h3>Add Another blog:</h3>
         <form onSubmit={handleBlogSubmit}>
           <label htmlFor="Date">Date:</label>
           <input
@@ -87,7 +88,6 @@ const BlogDetails = (props) => {
           <button type="submit">Add Blog</button>
         </form>
         <button onClick={handleDelete}>Delete Blog </button>
-        <button>Update Blog</button>
       </div>
     </div>
   ) : null
