@@ -1,6 +1,6 @@
 # Running Log and Blog
 
-## Date: 10/19/2022
+## Date: 10/28/2022
 
 ### By: Olivia Schwartz
 
@@ -10,7 +10,7 @@
 
 ### **_Description_**
 
-#### This project is a full-stack application that utilizes Mongoose, Express, React and Node. This application allows you to log and keep track of runs, as well as write about your training progress.
+#### This project is a full-stack application that utilizes Mongoose, Express, React and Node. This application allows you to log and keep track of runs, as well as write about your training progress in a blog format.
 
 ---
 
@@ -28,30 +28,36 @@
 
 ### **_Getting Started_**
 
-#### Entire you run information into the fields provided, use the search to search for any given criteria, and use the blog format to write about your training
+#### Enter your run information into the fields provided and use the blog format to write about your training progress. You can view your complete run log and blog as well.
 
 ---
 
 ### **_Screenshots_**
 
-#### Screenshot 1
+#### Application Landing Page
 
-#### Screenshot 2
+[![Screen-Shot-2022-10-28-at-12-27-22-AM.png](https://i.postimg.cc/MHzNF1Qh/Screen-Shot-2022-10-28-at-12-27-22-AM.png)](https://postimg.cc/k6hTV6wc)
 
-#### Screenshot 3
+#### Running Log
+
+[![Screen-Shot-2022-10-28-at-12-29-51-AM.png](https://i.postimg.cc/MZ41tzJY/Screen-Shot-2022-10-28-at-12-29-51-AM.png)](https://postimg.cc/8sRFzQ5F)
+
+#### Running Log Entry
+
+[![Screen-Shot-2022-10-28-at-12-31-13-AM.png](https://i.postimg.cc/d34sHsLj/Screen-Shot-2022-10-28-at-12-31-13-AM.png)](https://postimg.cc/4HHRnTvY)
 
 ---
 
 ### **_Future Updates_**
 
-- [] Future Update 1
-- [] Future Update 2
-- [] Future Update 3
+- [] Create a search function to search for specific runs
+- [] Add an image upload feature- to show route, or view on run
+- [] Pull in data from FitBit API to collect Data
 
 ---
 
 ### **_Credits_**
 
-##### Future Credit 1
+##### Grid Guide to CSS Tricks [Grid Guide CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
-##### Future Credit 2
+##### MongoDB Documentation [MongoDB](https://www.mongodb.com/docs/?_ga=2.192431017.2048629080.1666931672-540711561.1666931672)
