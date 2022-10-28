@@ -62,35 +62,26 @@ const RunDetails = (props) => {
   return run ? (
     <div>
       <div>
-        <h1>Run Log</h1>
+        <h1 className="runTitle">Run Log</h1>
         <h3>Date</h3>
-        <p>{run.date}</p>
+        <p className="runDetails">{run.date}</p>
       </div>
       <div>
         <h3>Distance:</h3>
-        <p>{run.distance}</p>
+        <p className="runDetails">{run.distance}</p>
         <h3>Time (in minutes):</h3>
-        <p>{run.time}</p>
+        <p className="runDetails">{run.time}</p>
       </div>
       <div>
         <h3>Difficulty:</h3>
-        <p>{run.difficulty}</p>
+        <p className="runDetails">{run.difficulty}</p>
       </div>
       <div>
-        <button className="link-button" onClick={viewBlog}>
-          View this run's blog
-        </button>
-        <button onClick={handleDelete}>Delete Run</button>
-
         <section className="blogCard"></section>
 
         <section>
           <div className="updateRun" />
-          <h4>Update Run Details Here:</h4>
-          <h6>
-            {' '}
-            <em>All inputs required**</em>
-          </h6>
+
           <form onSubmit={handleUpdate}>
             <label htmlFor="Date">Date:</label>
             <input
@@ -121,11 +112,20 @@ const RunDetails = (props) => {
               onChange={handleChange}
             />
             <button type="submit">Update Run</button>
+            <h6>
+              <em>All inputs required**</em>
+            </h6>
           </form>
         </section>
       </div>
-      <div className="goToLog" />
-      <button onClick={viewRun}>Go Back To Log</button>
+      <section className="button-container">
+        <button className="link-button" onClick={viewBlog}>
+          View this run's blog
+        </button>
+        <button onClick={handleDelete}>Delete Run</button>
+        <div className="goToLog" />
+        <button onClick={viewRun}>Go Back To Log</button>
+      </section>
     </div>
   ) : null
 }

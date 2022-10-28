@@ -145,4 +145,21 @@ label {
   color: white;
   font-family: "Cinzel", sans-serif;
   padding: 20px;
+  text-decoration: underline;
+}
+
+.runDetails{
+  color: white;
+  font-family: "Cinzel", sans-serif;
+  font-size: 20px;
+}
+
+.runTitle{
+  text-decoration: underline;
+}
+
+h6 {
+  padding: 0;
+  margin: 0;
+  color: white
 }
