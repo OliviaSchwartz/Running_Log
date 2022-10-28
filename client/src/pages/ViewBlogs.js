@@ -1,54 +1,42 @@
-import Header from '../components/Header'
-import axios from 'axios'
-import { Link, Navigate } from 'react-router-dom'
-import { useParams, useNavigate } from 'react-router-dom'
-import BlogCard from '../components/RunningCard'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import BlogCard from '../components/BlogCard'
 
-function ViewBlogs(props) {
-  let navigate = useNavigate()
+const Blogs = () => {
+  const [formState, setFormState] = useState({ date: '', description: '' })
+  const [blogs, updateBlogs] = useState([])
+  const navigate = useNavigate()
 
-  const [blogState, setBlogState] = useState([])
-
-  const [formBlogState, setFormBlogState] = useState({
-    date: '',
-    description: '',
-    run: ''
-  })
-
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value })
+  }
   useEffect(() => {
     const apiCall = async () => {
-      console.log('this is the API call')
-      let response = await axios.get('http://localhost:3001/blogs')
-      setBlogState(response.data)
+      let response = await axios.get(`http://localhost:3001/blogs/${blogs}`)
+      updateBlogs(response.data)
     }
     apiCall()
   }, [])
 
-  const handleBlogChange = (event) => {
-    setFormBlogState({
-      ...formBlogState,
-      [event.target.id]: event.target.value
-    })
-  }
-
-  const handleBlogSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(formBlogState)
-    let newBlog = await axios
-      .post('http://localhost:3001/blogs', formBlogState)
+    let addedBlog = await axios
+      .post('http://localhost:3001/blogs', formState)
       .then((response) => {
         return response
       })
       .catch((error) => {
-        console.log(error)
+        return error
       })
-    setBlogState([...blogState, newBlog.data])
-    setFormBlogState({
+    updateBlogs([...blogs, addedBlog.data])
+    setFormState({
       date: '',
-      description: '',
-      run: ''
+      description: ''
     })
+    navigate('/blogs')
   }
 
   const viewBlog = (_id) => {
@@ -56,40 +44,44 @@ function ViewBlogs(props) {
   }
 
   return (
-    <div className="blogData">
-      <div className="newBlog">
-        <h3>Add Another blog:</h3>
-        <form onSubmit={handleBlogSubmit}>
-          <label htmlFor="Date">Date:</label>
-          <input
-            id="date"
-            value={formBlogState.date}
-            onChange={handleBlogChange}
-          />
-          <label htmlFor="description">Description:</label>
-          <input
-            id="description"
-            value={formBlogState.description}
-            onChange={handleBlogChange}
-          />
-          <button type="submit">Add Blog</button>
-        </form>
-      </div>
+    <div>
+      <h1>Running Blogs</h1>
+      <form onSubmit={handleSubmit}>
+        <h3>Add Blog Post: </h3>
+        <label htmlFor="name">Name: </label>
+        <input id="name" value={formState.date} onChange={handleChange} />
+        <label htmlFor="description">Description:</label>
+        <input
+          id="description"
+          value={formState.description}
+          onChange={handleChange}
+        />
+        <button className="submit" type="submit">
+          Submit
+        </button>
+      </form>
+      <div className="blogs">
+        <div className="run-container">
+          {blogs.map((blog) => (
+            <div key={blog._id}>
+              <BlogCard
+                date={blog.date}
+                description={blog.description}
+                onClick={() => viewBlog(blog._id)}
+              />
+            </div>
+          ))}
 
-      <div className="run-container">
-        {blogState.map((blog) => (
-          <div key={blog._id}>
-            <BlogCard
-              key={blog._id}
-              date={blog.date}
-              description={blog.description}
-              onClick={() => viewBlog(blog._id)}
-            />
-          </div>
-        ))}
+          <button className="link-button">
+            {' '}
+            <Link className="link" to="/">
+              Back to Home
+            </Link>
+          </button>
+        </div>
       </div>
     </div>
   )
 }
 
-export default ViewBlogs
+export default Blogs

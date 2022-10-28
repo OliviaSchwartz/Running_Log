@@ -10,6 +10,8 @@ import Home from './Home'
 const BlogDetails = (props) => {
   const [blog, setBlog] = useState([])
   let { id } = useParams()
+  const [newBlog, setNewBlog] = useState([])
+  const [selectedBlog, setSelectedBlog] = useState([])
 
   useEffect(() => {
     const blogId = async () => {
@@ -24,7 +26,7 @@ const BlogDetails = (props) => {
   const [formBlogState, setFormBlogState] = useState({
     date: '',
     description: '',
-    run: ''
+    run: id
   })
 
   const handleBlogChange = (event) => {
@@ -53,6 +55,12 @@ const BlogDetails = (props) => {
     })
   }
 
+  const handleDelete = async (event) => {
+    event.preventDefault()
+    let deleteBlog = await axios.delete(`http://localhost:3001/blogs/${id}`)
+    setBlog(deleteBlog)
+  }
+
   return blog ? (
     <div>
       <div>
@@ -79,6 +87,8 @@ const BlogDetails = (props) => {
           />
           <button type="submit">Add Blog</button>
         </form>
+        <button>Delete Blog </button>
+        <button>Update Blog</button>
       </div>
     </div>
   ) : null

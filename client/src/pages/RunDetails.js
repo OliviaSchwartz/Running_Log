@@ -14,6 +14,7 @@ const RunDetails = (props) => {
   let navigate = useNavigate()
 
   const [updatedRun, setUpdatedRun] = useState([])
+  const [blog, setBlog] = useState([])
   const [formState, setFormState] = useState({
     date: '',
     distance: '',
