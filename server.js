@@ -16,9 +16,9 @@ app.use(express.static(`${__dirname}/client/build`))
 
 db.on('error', console.log.bind(console, 'MongoDB connection error: '))
 
-app.get('/', (req, res) => {
-  res.send({ msg: 'This route is being hit' })
-})
+// app.get('/', (req, res) => {
+//   res.send({ msg: 'This route is being hit' })
+// })
 
 app.get('/runs', runController.getAllRuns)
 app.get('/runs/:id', runController.runByDate)
