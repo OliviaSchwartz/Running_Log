@@ -13,9 +13,7 @@ app.use(express.json())
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.static(`${__dirname}/client/build`))
-app.get('./*', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`)
-})
+
 db.on('error', console.log.bind(console, 'MongoDB connection error: '))
 
 app.get('/', (req, res) => {
@@ -33,6 +31,10 @@ app.get('/blogs/:id', blogController.blogByDate)
 app.post('/blogs', blogController.createBlog)
 app.put('/blogs/:id', blogController.updatedBlog)
 app.delete('/blogs/:id', blogController.deleteBlog)
+
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`)
+})
 
 app.listen(PORT, () => {
   console.log(`Express server listening on: ${PORT}`)
