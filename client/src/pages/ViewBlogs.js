@@ -48,8 +48,8 @@ const Blogs = () => {
       <h1>Running Blogs</h1>
       <form onSubmit={handleSubmit}>
         <h3>Add Blog Post: </h3>
-        <label htmlFor="name">Name: </label>
-        <input id="name" value={formState.date} onChange={handleChange} />
+        <label htmlFor="date">Date: </label>
+        <input id="date" value={formState.date} onChange={handleChange} />
         <label htmlFor="description">Description:</label>
         <input
           id="description"

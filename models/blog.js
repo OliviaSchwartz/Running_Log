@@ -4,7 +4,7 @@ const blogSchema = new Schema(
   {
     date: { type: String, required: true },
     description: { type: String, required: true },
-    run: { type: Schema.Types.ObjectId, ref: 'Run' }
+    run: [{ type: Schema.Types.ObjectId, ref: 'Run' }]
   },
   { timestamps: true }
 )

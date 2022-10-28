@@ -55,11 +55,8 @@ const RunDetails = (props) => {
     navigate(`/runs`)
   }
 
-  const viewBlog = async (event) => {
-    let viewOneBlog = await axios
-      .findById(`http://localhost:3001/blogs/${id}`)
-      .populate('Run')
-    return viewOneBlog
+  const viewBlog = (_id) => {
+    navigate(`/blogs/${id}`).populate('date')
   }
 
   return run ? (
