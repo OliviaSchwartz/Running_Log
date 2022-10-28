@@ -55,8 +55,11 @@ const RunDetails = (props) => {
     navigate(`/runs`)
   }
 
-  const viewBlogs = (_id) => {
-    navigate(`/blogs/${id}`)
+  const viewBlog = async (event) => {
+    let viewOneBlog = await axios
+      .findById(`http://localhost:3001/blogs/${id}`)
+      .populate('Run')
+    return viewOneBlog
   }
 
   return run ? (
@@ -77,7 +80,7 @@ const RunDetails = (props) => {
         <p>{run.difficulty}</p>
       </div>
       <div>
-        <button className="link-button" onClick={viewBlogs}>
+        <button className="link-button" onClick={viewBlog}>
           View this run's blog
         </button>
         <button onClick={handleDelete}>Delete Run</button>

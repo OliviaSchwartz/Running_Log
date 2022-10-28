@@ -50,8 +50,7 @@ const BlogDetails = (props) => {
     setBlogState([...blogState, newBlog.data])
     setFormBlogState({
       date: '',
-      description: '',
-      run: ''
+      description: ''
     })
   }
 
@@ -87,7 +86,7 @@ const BlogDetails = (props) => {
           />
           <button type="submit">Add Blog</button>
         </form>
-        <button>Delete Blog </button>
+        <button onClick={handleDelete}>Delete Blog </button>
         <button>Update Blog</button>
       </div>
     </div>
