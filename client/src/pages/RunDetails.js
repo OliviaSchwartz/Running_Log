@@ -48,7 +48,6 @@ const RunDetails = (props) => {
     )
     setUpdatedRun([updatedRun, updateRun.data])
     setFormState({ date: '', distance: '', time: '', difficulty: '' })
-    window.location.reload()
   }
 
   const viewRun = (_id) => {
