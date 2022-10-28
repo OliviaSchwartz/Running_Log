@@ -47,7 +47,7 @@ const BlogDetails = (props) => {
       date: '',
       description: ''
     })
-    window.location.reload()
+    window.refresh()
   }
 
   const handleDelete = async (event) => {
