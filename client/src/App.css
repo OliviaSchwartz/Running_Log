@@ -135,3 +135,14 @@ button {
 .cardDisplay {
   font-size: 20px;
 }
+
+.viewRunForm {
+padding: 10px;
+margin: 10px;
+}
+
+label {
+  color: white;
+  font-family: "Cinzel", sans-serif;
+  padding: 20px;
+}

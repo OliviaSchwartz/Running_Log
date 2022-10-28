@@ -58,7 +58,7 @@ function ViewRuns(props) {
     <div className="runData">
       <div className="newRun">
         <h3>Add A New Run Log:</h3>
-        <form onSubmit={handleRunSubmit}>
+        <form className="viewRunForm" onSubmit={handleRunSubmit}>
           <label htmlFor="Date">Date:</label>
           <input
             id="date"
