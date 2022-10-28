@@ -47,7 +47,6 @@ const BlogDetails = (props) => {
       date: '',
       description: ''
     })
-    window.refresh()
   }
 
   const handleDelete = async (event) => {
@@ -64,7 +63,6 @@ const BlogDetails = (props) => {
     )
     setUpdatedBlog([updatedBlog, updateBlog.data])
     setFormBlogState({ date: '', description: '' })
-    window.location.reload()
   }
 
   return blog ? (
