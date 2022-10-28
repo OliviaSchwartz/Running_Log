@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Satisfy&display=swap');
+
+
 .App {
   text-align: center;
 }
@@ -44,5 +48,48 @@
 
 
 body {
- background-color: #61dafb;
+ background-color: #033A56;
+ margin: 0;
+ padding: 0;
+}
+
+header {
+  background-color: white;
+  display: flex;
+  padding: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  height: 3em;
+}
+
+header nav a {
+  margin: 0 1em;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-family: "Cinzel", sans-serif;
+}
+
+.selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 200px;
+  column-gap: 25px;
+}
+
+.runSelection, .blogSelection {
+  cursor: pointer
+}
+
+.runLogPhoto, .blogPhoto {
+  border: 25px white solid;
+}
+
+.homeLink {
+  color:white;
+  font-family: "Cinzel", sans-serif;
+  font-size: 40px;
 }

@@ -46,8 +46,8 @@ const Blogs = () => {
   return (
     <div>
       <h1>Running Blogs</h1>
-      <form onSubmit={handleSubmit}>
-        <h3>Add Blog Post: </h3>
+      <form className="form" onSubmit={handleSubmit}>
+        <h3 className="blogTitle">Add Blog Post: </h3>
         <label htmlFor="date">Date: </label>
         <input id="date" value={formState.date} onChange={handleChange} />
         <label htmlFor="description">Description:</label>

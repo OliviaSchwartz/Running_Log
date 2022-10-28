@@ -14,7 +14,9 @@ const Home = () => {
             alt="runner"
           />
           <div className="link">
-            <Link to="/runs">Running Log</Link>
+            <Link className="homeLink" to="/runs">
+              Running Log
+            </Link>
           </div>
         </div>
         <div className="blogSelection">
@@ -24,7 +26,9 @@ const Home = () => {
             alt="sunnyRunner"
           />
           <div className="link">
-            <Link to="/blogs">Running Blog</Link>
+            <Link className="homeLink" to="/blogs">
+              Running Blog
+            </Link>
           </div>
         </div>
       </div>
