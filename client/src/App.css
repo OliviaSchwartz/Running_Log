@@ -167,3 +167,13 @@ h6 {
 .blogTitle {
   font-size: 20px;
 }
+
+
+.blogform{
+  background-color: white;
+  color: #033A56;
+}
+
+.blogData, .blogAdd{
+  color:#033A56
+}

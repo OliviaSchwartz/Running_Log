@@ -22,7 +22,7 @@ const BlogDetails = (props) => {
   const [formBlogState, setFormBlogState] = useState({
     date: '',
     description: '',
-    run: id
+    run: ''
   })
 
   const handleBlogChange = (event) => {

@@ -1,4 +1,4 @@
-const { Blog } = require('../models')
+const { Blog, Run } = require('../models')
 
 const getAllBlogs = async (req, res) => {
   const blogs = await Blog.find({})
@@ -11,10 +11,16 @@ const blogByDate = async (req, res) => {
 }
 
 const createBlog = async (req, res) => {
-  let exampleBlogId = '6352b7d9e4d4c6bb3a1cda5b'
-  const requestBody = { ...req.body, run: exampleBlogId }
-  let createdBlog = await Blog.create(requestBody)
-  res.json({ createdBlog })
+  try {
+    let newBlog = await Blog.create(req.body)
+    console.log(newBlog)
+    let updatedRun = await Run.findById(req.params.id)
+    updatedRun.run.push(newBlog._id)
+    await blog.save()
+    res.send(newBlog)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
 }
 
 const updatedBlog = async (req, res) => {

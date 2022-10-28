@@ -15,6 +15,12 @@ const RunDetails = (props) => {
 
   const [updatedRun, setUpdatedRun] = useState([])
   const [blog, setBlog] = useState([])
+  const [formBlogState, setFormBlogState] = useState({
+    date: '',
+    description: '',
+    run: id
+  })
+  const [blogs, updateBlogs] = useState([])
   const [formState, setFormState] = useState({
     date: '',
     distance: '',
@@ -54,8 +60,35 @@ const RunDetails = (props) => {
     navigate(`/runs`)
   }
 
-  const viewBlog = (_id) => {
-    navigate(`/blogs/${id}`).populate('date')
+  const viewBlog = (id) => {
+    navigate(`/blogs/${id}`)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    let addedBlog = await axios
+      .post('http://localhost:3001/blogs', { ...formBlogState, runId: run.id })
+      .then((response) => {
+        console.log(response)
+        return response
+      })
+      .catch((error) => {
+        return error
+      })
+    updateBlogs([...blogs, addedBlog.data])
+    setFormBlogState({
+      date: '',
+      description: '',
+      run: id
+    })
+    navigate('/blogs')
+  }
+
+  const handleBlogChange = (event) => {
+    setFormBlogState({
+      ...formBlogState,
+      [event.target.id]: event.target.value
+    })
   }
 
   return run ? (
@@ -117,6 +150,28 @@ const RunDetails = (props) => {
           </form>
         </section>
       </div>
+      <form className="blogform" onSubmit={handleSubmit}>
+        <h3 className="blogAdd">Add A New Blog Post: </h3>
+        <label className="blogData" htmlFor="date">
+          Date:{' '}
+        </label>
+        <input
+          id="date"
+          value={formBlogState.date}
+          onChange={handleBlogChange}
+        />
+        <label className="blogData" htmlFor="description">
+          Description:
+        </label>
+        <input
+          id="description"
+          value={formBlogState.description}
+          onChange={handleBlogChange}
+        />
+        <button className="submit" type="submit">
+          Submit
+        </button>
+      </form>
       <section className="button-container">
         <button className="link-button" onClick={viewBlog}>
           View this run's blog
