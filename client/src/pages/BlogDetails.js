@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import ViewRuns from './ViewRuns'
-import RunningCard from '../components/RunningCard'
-import ViewBlogs from './ViewBlogs'
-import BlogCard from '../components/BlogCard'
 import Home from './Home'
+import { Link } from 'react-router-dom'
 
 const BlogDetails = (props) => {
   const [blog, setBlog] = useState([])
   let { id } = useParams()
-  const [newBlog, setNewBlog] = useState([])
-  const [selectedBlog, setSelectedBlog] = useState([])
+  const [updatedBlog, setUpdatedBlog] = useState([])
 
   useEffect(() => {
     const blogId = async () => {
@@ -38,9 +34,8 @@ const BlogDetails = (props) => {
 
   const handleBlogSubmit = async (event) => {
     event.preventDefault()
-    console.log(formBlogState)
     let newBlog = await axios
-      .post('http://localhost:3001/blogs', formBlogState)
+      .post(`http://localhost:3001/blogs/`, formBlogState)
       .then((response) => {
         return response
       })
@@ -52,12 +47,24 @@ const BlogDetails = (props) => {
       date: '',
       description: ''
     })
+    window.location.reload()
   }
 
   const handleDelete = async (event) => {
     event.preventDefault()
     let deleteBlog = await axios.delete(`http://localhost:3001/blogs/${id}`)
     setBlog(deleteBlog)
+  }
+
+  const handleUpdate = async (event) => {
+    event.preventDefault()
+    let updateBlog = await axios.put(
+      `http://localhost:3001/blogs/${id}`,
+      formBlogState
+    )
+    setUpdatedBlog([updatedBlog, updateBlog.data])
+    setFormBlogState({ date: '', description: '' })
+    window.location.reload()
   }
 
   return blog ? (
@@ -72,7 +79,7 @@ const BlogDetails = (props) => {
         <p className="runDetails">{blog.description} </p>
       </div>
       <div className="newBlog">
-        <form onSubmit={handleBlogSubmit}>
+        <form onSubmit={handleUpdate}>
           <label htmlFor="Date">Date:</label>
           <input
             id="date"
@@ -85,9 +92,19 @@ const BlogDetails = (props) => {
             value={formBlogState.description}
             onChange={handleBlogChange}
           />
-          <button type="submit">Add Blog</button>
+          <button type="submit">Update Blog</button>
         </form>
         <button onClick={handleDelete}>Delete Blog </button>
+        <div className="link">
+          <Link className="homeLink" to="/blogs">
+            <button>Back to Blogs</button>
+          </Link>
+        </div>
+        <div className="link">
+          <Link className="homeLink" to="/runs">
+            <button>Back to Running Log</button>
+          </Link>
+        </div>
       </div>
     </div>
   ) : null
