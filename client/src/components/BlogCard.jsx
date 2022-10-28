@@ -7,8 +7,8 @@ const BlogCard= ({onClick, date, description, run, id}) => {
     return (
         <div className="card blog-card"onClick={() => onClick(id)}  >
             <div className="info-wrapper flex-col">
-                <h3>Run Date: {date}</h3>
-                <p>Description:{description}</p>
+                <h3 className= "runDateDisplay">Run Date: {date}</h3>
+                <p className="cardDisplay">Description: {description}</p>
             </div>
 
         </div>

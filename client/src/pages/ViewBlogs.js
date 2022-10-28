@@ -47,7 +47,7 @@ const Blogs = () => {
     <div>
       <h1>Running Blogs</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <h3 className="blogTitle">Add Blog Post: </h3>
+        <h3 className="blogTitle">Add A New Blog Post: </h3>
         <label htmlFor="date">Date: </label>
         <input id="date" value={formState.date} onChange={handleChange} />
         <label htmlFor="description">Description:</label>
@@ -71,13 +71,6 @@ const Blogs = () => {
               />
             </div>
           ))}
-
-          <button className="link-button">
-            {' '}
-            <Link className="link" to="/">
-              Back to Home
-            </Link>
-          </button>
         </div>
       </div>
     </div>
