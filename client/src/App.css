@@ -93,3 +93,35 @@ a {
   font-family: "Cinzel", sans-serif;
   font-size: 40px;
 }
+
+h3 {
+  font-family: "Cinzel", sans-serif;
+  color: white;
+  font-size: 30px
+}
+
+h1 {
+  font-family: "Cinzel",sans-serif;
+  color: white;
+  font-size: 45px
+}
+
+button {
+  background-color: white;
+  color: #033A56;
+  margin: 30px;
+  font-family: "Cinzel",sans-serif;
+}
+
+.run-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+}
+
+.run-card{
+  background-color: white;
+  padding: 20px;
+  margin: 30px;
+  font-family: "Cinzel", sans-serif;
+}
