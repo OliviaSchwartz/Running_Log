@@ -60,10 +60,6 @@ const RunDetails = (props) => {
     navigate(`/runs`)
   }
 
-  const viewBlog = (id) => {
-    navigate(`/blogs/${id}`)
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     let addedBlog = await axios
@@ -151,7 +147,7 @@ const RunDetails = (props) => {
         </section>
       </div>
       <form className="blogform" onSubmit={handleSubmit}>
-        <h3 className="blogAdd">Add A New Blog Post: </h3>
+        <h3 className="blogAdd">Add A Blog Post For This Run: </h3>
         <label className="blogData" htmlFor="date">
           Date:{' '}
         </label>
@@ -173,9 +169,6 @@ const RunDetails = (props) => {
         </button>
       </form>
       <section className="button-container">
-        <button className="link-button" onClick={viewBlog}>
-          View this run's blog
-        </button>
         <button onClick={handleDelete}>Delete Run</button>
         <div className="goToLog" />
         <button onClick={viewRun}>Go Back To Log</button>
