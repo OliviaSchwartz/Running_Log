@@ -142,6 +142,7 @@ const RunDetails = (props) => {
             <button type="submit">Update Run</button>
             <h6>
               <em>All inputs required**</em>
+              <em> Refresh page to see changes**</em>
             </h6>
           </form>
         </section>

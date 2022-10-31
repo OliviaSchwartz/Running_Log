@@ -18,7 +18,7 @@
 
 - GitHub
 - VS Code
-- Heroku -[Heroku App Here](https://olivias-log.herokuapp.com/runs)
+- Heroku -[Heroku App Here](https://olivias-log.herokuapp.com/)
 - Insomnia
 - MongoDB Compass
 - Trello
