@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 
 function ViewRuns(props) {
   let navigate = useNavigate()
+  let { id } = useParams()
 
   const [runState, setRunState] = useState([])
 
@@ -20,7 +21,7 @@ function ViewRuns(props) {
   useEffect(() => {
     const apiCall = async () => {
       console.log('this is the API call')
-      let response = await axios.get('http://localhost:3001/runs')
+      let response = await axios.get(`http://localhost:3001/runs`)
       setRunState(response.data)
     }
     apiCall()
